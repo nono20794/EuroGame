@@ -329,8 +329,8 @@ body{
 }
 
 .avatar-container img {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 .avatar-icon {
@@ -342,5 +342,5 @@ body{
     padding: 3px;
     font-size: 12px;
 
-    transform: translate(25%, -25%);
+    transform: translate(15%, -15%);
 }
