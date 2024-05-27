@@ -318,9 +318,9 @@ body{
         border: 1px solid var(--color-default);
         border-bottom-color: transparent;
     }
-    .tab-content {
-        border: 1px solid var(--color-default);
-    }
+    /*.tab-content {*/
+    /*    border: 1px solid var(--color-default);*/
+    /*}*/
 }
 
 .avatar-container {
