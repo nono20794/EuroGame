@@ -344,3 +344,10 @@ body{
 
     transform: translate(15%, -15%);
 }
+
+.team-img{
+    --bs-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 55%);
+}
+.score-in {
+    --input-group-addon-bg:transparent;
+}
