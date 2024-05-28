@@ -351,3 +351,18 @@ body{
 .score-in {
     --input-group-addon-bg:transparent;
 }
+.groupA .card-header{
+    background-color: #34a853e0;
+}
+.img-team-group{
+    height: 26px;
+}
+/*.groups .card{*/
+/*    --bs-card-border-radius: 1.5rem;*/
+/*    --bs-card-inner-border-radius: calc(1.5rem - 1px);*/
+/*}*/
+.form-select:focus {
+    outline: black;
+    box-shadow: none;
+    border-color: #dee2e6;
+}
