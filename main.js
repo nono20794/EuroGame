@@ -14,6 +14,7 @@ function updateImage(imgElement, selectedValue) {
     console.log(imgElement, selectedValue);
     let flagSrc;
     switch (selectedValue) {
+        //GROUP A
         case 'germany':
             flagSrc = 'flags/Germany.svg';
             break;
@@ -26,8 +27,13 @@ function updateImage(imgElement, selectedValue) {
         case 'scotland':
             flagSrc = 'flags/Scotland.svg';
             break;
+            //GROUP B
+            //GROUP C
+            //GROUP D
+            //GROUP E
+            //GROUP F
         default:
-            flagSrc = '';
+            flagSrc = 'images/card-image.svg';
     }
     imgElement.src = flagSrc;
 }
