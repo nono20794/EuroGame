@@ -23,11 +23,40 @@ function register () {
     const password = document.getElementById("password").value;
 
     auth.createUserWithEmailAndPassword(email, password)
-        .then((user) => {
+        .then(() => {
             console.log('Email:', email);
             console.log('Password:', password);
-            // Open the index.html file
-            window.location.href = 'home.html';
+            const user = auth.currentUser;
+            console.log(user.uid);
+            const user_data = {
+                first_name : "",
+                last_name : "",
+                user_img : "",
+                win_team : "",
+                top_scorer : "",
+                matches_guess : {
+                    game1 : {
+                        germany:0,
+                        scotland:0
+                    }
+                },
+                group_standing :{
+                    groupA:{
+                        team1 : "",
+                        team2 : "",
+                        team3 : "",
+                        team4: ""
+                    }
+                }
+
+            }
+            database.ref('users/' + user.uid).set(user_data)
+                .then(function() {
+                    window.location.href = "home.html";
+                })
+                .catch(function(error) {
+                    alert(error.message);
+                });
         })
         .catch((error) => {
             alert(error);
@@ -45,9 +74,10 @@ function logIn () {
     const password = document.getElementById("password").value;
 
     auth.signInWithEmailAndPassword(email, password)
-        .then((user) => {
+        .then(() => {
             console.log('Email:', email);
             console.log('Password:', password);
+
             // Open the index.html file
             window.location.href = 'home.html';
         })
