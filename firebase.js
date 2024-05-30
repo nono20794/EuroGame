@@ -120,20 +120,44 @@ if(saveButtons)
                 const teamBPoints = matchInstance.querySelector('.teamB-points').value;
 
                 console.log(`Match ID: ${matchId},group id: ${groupId}, User: ${user}, Team A: ${teamA}, Team B: ${teamB}, Team A Points: ${teamAPoints}, Team B Points: ${teamBPoints}`);
+                let updates = {
+                    teamA : teamA,
+                    teamA_score : Number(teamAPoints),
+                    teamB :teamB,
+                    teamB_score :Number(teamBPoints)
+                };
 
+
+                    const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
+                    const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
+                    matchRef.collection("prediction").doc(user.uid).set(updates)
+                        .then(() => {
+                                    alert("Document successfully updated!");
+                                })
+                                .catch((error) => {
+                                    // The document probably doesn't exist.
+                                    console.error("Error updating document: ", error);
+                                });
+                // firestore.collection("groups").doc('user.uid').update(updates)
+                //     .then(() => {
+                //         alert("Document successfully updated!");
+                //     })
+                //     .catch((error) => {
+                //         // The document probably doesn't exist.
+                //         console.error("Error updating document: ", error);
+                //     });
                 // Your code to save the match data goes here
-                saveMatch(user, teamA, teamB, teamAPoints, teamBPoints);
             } else {
                 console.log('No match instance found for the clicked save button.');
             }
         });
     });
 
+
 }
 // Function to save the match data
-function saveMatch(user, teamA, teamB, teamAPoints, teamBPoints) {
+function saveMatch(user, matchId, groupId,teamA, teamB, teamAPoints, teamBPoints) {
     // Your code to save the match data goes here
     // updates[`matches_guess.match${matchId}.team${j}`] = selectElement.options[selectElement.selectedIndex].value;
 
-    console.log(`User: ${user}, Team A: ${teamA}, Team B: ${teamB}, Team A Points: ${teamAPoints}, Team B Points: ${teamBPoints}`);
 }
