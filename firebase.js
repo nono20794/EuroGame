@@ -21,6 +21,11 @@ if (regSubmitButton) {
 function register () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const firstName = document.getElementById("firstName").value;
+    console.log(firstName);
+
+    const lastName = document.getElementById("LastName").value;
+    console.log(lastName);
 
     auth.createUserWithEmailAndPassword(email, password)
         .then(() => {
@@ -29,8 +34,8 @@ function register () {
             const user = auth.currentUser;
             console.log(user.uid);
             const user_data = {
-                first_name : "",
-                last_name : "",
+                first_name : firstName,
+                last_name : lastName,
                 user_img : "",
                 win_team : "",
                 top_scorer : "",
