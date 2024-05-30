@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function updateImage(imgElement, selectedValue) {
-    console.log(imgElement, selectedValue);
     let flagSrc;
     switch (selectedValue) {
         //GROUP A

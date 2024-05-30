@@ -11,7 +11,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const auth = firebase.auth()
-const database = firebase.database()
+// const database = firebase.database()
+const firestore = firebase.firestore();
 
 const regSubmitButton = document.querySelector('.register-submit');
 // regSubmitButton.addEventListener('click', register);
@@ -22,46 +23,32 @@ function register () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const firstName = document.getElementById("firstName").value;
-    console.log(firstName);
-
     const lastName = document.getElementById("LastName").value;
-    console.log(lastName);
 
     auth.createUserWithEmailAndPassword(email, password)
         .then(() => {
-            console.log('Email:', email);
-            console.log('Password:', password);
             const user = auth.currentUser;
-            console.log(user.uid);
             const user_data = {
                 first_name : firstName,
                 last_name : lastName,
                 user_img : "",
                 win_team : "",
                 top_scorer : "",
-                matches_guess : {
-                    game1 : {
-                        germany:0,
-                        scotland:0
-                    }
-                },
-                group_standing :{
-                    groupA:{
-                        team1 : "",
-                        team2 : "",
-                        team3 : "",
-                        team4: ""
-                    }
-                }
-
+                total_points : 0,
+                group_Stages_Points : 0,
+                group_Standing_Points : 0,
+                knockout_Points: 0,
+                top_Scorer_points : 0
             }
-            database.ref('users/' + user.uid).set(user_data)
-                .then(function() {
-                    window.location.href = "home.html";
+
+            firestore.collection("users").doc(user.uid).set(user_data)
+                .then(() => {
+                    console.log("Document successfully written!");
                 })
-                .catch(function(error) {
-                    alert(error.message);
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
                 });
+
         })
         .catch((error) => {
             alert(error);
@@ -80,8 +67,6 @@ function logIn () {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            console.log('Email:', email);
-            console.log('Password:', password);
 
             // Open the index.html file
             window.location.href = 'home.html';
@@ -89,4 +74,66 @@ function logIn () {
         .catch((error) => {
             alert(error);
         })
+}
+// const saveGBtn = document.getElementById('save-group-submit');
+// if (saveGBtn) {
+//     saveGBtn.addEventListener('click',saveGroups);
+// }
+// function saveGroups(){
+//     let updates = {};
+//     const user = auth.currentUser;
+//     let groups=['A','B','C','D','E','F']
+//     for(let i =0; i<6; i++){
+//         for (let j = 1; j <= 4; j++) { // Assuming each card has 4 rows
+//             let selectElement = document.getElementById(`group${groups[i]}Select${j}`);
+//             updates[`group_standing.group${groups[i]}.team${j}`] = selectElement.options[selectElement.selectedIndex].value;
+//         }
+//     }
+//
+//     firestore.collection("users").doc(user.uid).update(updates)
+//         .then(() => {
+//             alert("Document successfully updated!");
+//         })
+//         .catch((error) => {
+//             // The document probably doesn't exist.
+//             console.error("Error updating document: ", error);
+//         });
+//
+// }
+
+const saveButtons = document.querySelectorAll('.save-group-match-submit');
+
+if(saveButtons)
+{
+    saveButtons.forEach((saveButton) => {
+        saveButton.addEventListener('click', () => {
+            // Find the corresponding instance of the HTML structure
+            const matchInstance = saveButton.closest('.match-group');
+
+            if (matchInstance) {
+                const matchId = matchInstance.dataset.matchgroupId;
+                const groupId = matchInstance.dataset.groupId;// Get the match ID
+                const user = auth.currentUser;
+                const teamA = matchInstance.querySelector('.teamA').textContent;
+                const teamB = matchInstance.querySelector('.teamB').textContent;
+                const teamAPoints = matchInstance.querySelector('.teamA-points').value;
+                const teamBPoints = matchInstance.querySelector('.teamB-points').value;
+
+                console.log(`Match ID: ${matchId},group id: ${groupId}, User: ${user}, Team A: ${teamA}, Team B: ${teamB}, Team A Points: ${teamAPoints}, Team B Points: ${teamBPoints}`);
+
+                // Your code to save the match data goes here
+                saveMatch(user, teamA, teamB, teamAPoints, teamBPoints);
+            } else {
+                console.log('No match instance found for the clicked save button.');
+            }
+        });
+    });
+
+}
+// Function to save the match data
+function saveMatch(user, teamA, teamB, teamAPoints, teamBPoints) {
+    // Your code to save the match data goes here
+    // updates[`matches_guess.match${matchId}.team${j}`] = selectElement.options[selectElement.selectedIndex].value;
+
+    console.log(`User: ${user}, Team A: ${teamA}, Team B: ${teamB}, Team A Points: ${teamAPoints}, Team B Points: ${teamBPoints}`);
 }
