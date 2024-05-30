@@ -366,3 +366,13 @@ body{
     box-shadow: none;
     border-color: #dee2e6;
 }
+.groups .card .points-header{
+    padding-right: 12px;
+}
+@media (min-width: 992px) and (max-width: 1029px){
+    .groups .card .form-select{
+        padding-left: 10px;
+        padding-right: 30px;
+
+    }
+}
