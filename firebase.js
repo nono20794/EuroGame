@@ -75,31 +75,34 @@ function logIn () {
             alert(error);
         })
 }
-// const saveGBtn = document.getElementById('save-group-submit');
-// if (saveGBtn) {
-//     saveGBtn.addEventListener('click',saveGroups);
-// }
-// function saveGroups(){
-//     let updates = {};
-//     const user = auth.currentUser;
-//     let groups=['A','B','C','D','E','F']
-//     for(let i =0; i<6; i++){
-//         for (let j = 1; j <= 4; j++) { // Assuming each card has 4 rows
-//             let selectElement = document.getElementById(`group${groups[i]}Select${j}`);
-//             updates[`group_standing.group${groups[i]}.team${j}`] = selectElement.options[selectElement.selectedIndex].value;
-//         }
-//     }
-//
-//     firestore.collection("users").doc(user.uid).update(updates)
-//         .then(() => {
-//             alert("Document successfully updated!");
-//         })
-//         .catch((error) => {
-//             // The document probably doesn't exist.
-//             console.error("Error updating document: ", error);
-//         });
-//
-// }
+const saveGBtn = document.getElementById('save-group-submit');
+if (saveGBtn) {
+    saveGBtn.addEventListener('click',saveGroups);
+}
+function saveGroups(){
+    let updates = {};
+    const user = auth.currentUser;
+    let groups=['A','B','C','D','E','F']
+    for(let i =0; i<6; i++){
+        const GroupRef = firestore.collection("groups").doc(`group${groups[i]}`);
+        for (let j = 1; j <= 4; j++) { // Assuming each card has 4 rows
+            let selectElement = document.getElementById(`group${groups[i]}Select${j}`);
+            updates[`team${j}`] = selectElement.options[selectElement.selectedIndex].value;
+        }
+        GroupRef.collection("standing_predictions").doc(user.uid).set(updates)
+            .then(() => {
+
+            })
+            .catch(() => {
+                // The document probably doesn't exist.
+                alert("Error updating document: ");
+            });
+    }
+
+    alert("Document successfully updated!");
+
+
+}
 
 const saveButtons = document.querySelectorAll('.save-group-match-submit');
 
