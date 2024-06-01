@@ -1,14 +1,61 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        // const selectElements = document.querySelectorAll('select.form-select');
-        // selectElements.forEach(select => {
-        //     for(let i =1;i<=4;i++)
-        //     {
-        //
-        //     }
-        //     const selectedValue = this.value;
-        //     const imgElement = this.parentElement.querySelector('img.img-fluid');
-        // });
+        let groups=['A','B','C','D','E','F']
+        for(let i=0;i<groups.length;i++){
+            const GroupRef = firestore.collection("groups").doc(`group${groups[i]}`);
+            let docRefStand = GroupRef.collection("standing_predictions").doc(user.uid)
+            docRefStand.get().then((doc) => {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                    let selectVal = document.getElementById(`group${groups[i]}Select1`)
+                    selectVal.value = doc.data().team1;
+                    updateImage(document.getElementById(`group${groups[i]}Flag1`), selectVal.value);
+
+                    selectVal = document.getElementById(`group${groups[i]}Select2`);
+                    selectVal.value = doc.data().team2;
+                    updateImage(document.getElementById(`group${groups[i]}Flag2`), selectVal.value);
+
+                    selectVal = document.getElementById(`group${groups[i]}Select3`);
+                    selectVal.value = doc.data().team3;
+                    updateImage(document.getElementById(`group${groups[i]}Flag3`), selectVal.value);
+
+                    selectVal = document.getElementById(`group${groups[i]}Select4`);
+                    selectVal.value = doc.data().team4;
+                    updateImage(document.getElementById(`group${groups[i]}Flag4`), selectVal.value);
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+
+            const matches  = document.querySelectorAll('.match-group');
+            matches.forEach((matchInstance)=>{
+                const matchId = matchInstance.dataset.matchgroupId;
+                const groupId = matchInstance.dataset.groupId;// Get the match ID
+                const user = auth.currentUser;
+                const teamA = matchInstance.querySelector('.teamA').textContent;
+                const teamB = matchInstance.querySelector('.teamB').textContent;
+                const teamAPoints = matchInstance.querySelector('.teamA-points').value;
+                const teamBPoints = matchInstance.querySelector('.teamB-points').value;
+                const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
+                matchRef.collection("prediction").doc(user.uid).get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            matchInstance.querySelector('.teamA-points').value = doc.data().teamA_score;
+                            matchInstance.querySelector('.teamB-points').value = doc.data().teamB_score;
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.log("No such document!");
+                        }
+                    }).catch((error) => {
+                    console.log("Error getting document:", error);
+                });
+            });
+
+        }
+
     } else {
         window.location.href = 'index.html';
     }
@@ -44,10 +91,70 @@ function updateImage(imgElement, selectedValue) {
             flagSrc = 'flags/Scotland.svg';
             break;
         //GROUP B
+        case 'spain':
+            flagSrc = 'flags/Spain.svg';
+            break;
+        case 'croatia':
+            flagSrc = 'flags/Croatia.svg';
+            break;
+        case 'italy':
+            flagSrc = 'flags/Italy.svg';
+            break;
+        case 'albania':
+            flagSrc = 'flags/Albania.svg';
+            break;
         //GROUP C
+        case 'england':
+            flagSrc = 'flags/England.svg';
+            break;
+        case 'slovenia':
+            flagSrc = 'flags/Slovenia.svg';
+            break;
+        case 'denmark':
+            flagSrc = 'flags/Denmark.svg';
+            break;
+        case 'serbia':
+            flagSrc = 'flags/Serbia.svg';
+            break;
         //GROUP D
+        case 'netherlands':
+            flagSrc = 'flags/Netherlands.svg';
+            break;
+        case 'france':
+            flagSrc = 'flags/France.svg';
+            break;
+        case 'poland':
+            flagSrc = 'flags/Poland.svg';
+            break;
+        case 'austria':
+            flagSrc = 'flags/Austria.svg';
+            break;
         //GROUP E
+        case 'ukraine':
+            flagSrc = 'flags/Ukraine.svg';
+            break;
+        case 'slovakia':
+            flagSrc = 'flags/Slovakia.svg';
+            break;
+        case 'belgium':
+            flagSrc = 'flags/Belgium.svg';
+            break;
+        case 'romania':
+            flagSrc = 'flags/Romania.svg';
+            break;
         //GROUP F
+        case 'portugal':
+            flagSrc = 'flags/Portugal.svg';
+            break;
+        case 'czechia':
+            flagSrc = 'flags/Czech-Republic.svg';
+            break;
+        case 'georgia':
+            flagSrc = 'flags/Georgia.svg';
+            break;
+        case 'turkey':
+            flagSrc = 'flags/Turkey.svg';
+            break;
         default:
             flagSrc = 'images/card-image.svg';
     }
