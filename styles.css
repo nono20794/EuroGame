@@ -376,3 +376,6 @@ body{
 
     }
 }
+.bi-pencil-square{
+    cursor: pointer;
+}
