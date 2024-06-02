@@ -33,12 +33,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             const matches  = document.querySelectorAll('.match-group');
             matches.forEach((matchInstance)=>{
                 const matchId = matchInstance.dataset.matchgroupId;
-                const groupId = matchInstance.dataset.groupId;// Get the match ID
                 const user = auth.currentUser;
-                const teamA = matchInstance.querySelector('.teamA').textContent;
-                const teamB = matchInstance.querySelector('.teamB').textContent;
-                const teamAPoints = matchInstance.querySelector('.teamA-points').value;
-                const teamBPoints = matchInstance.querySelector('.teamB-points').value;
+
                 const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
                 matchRef.collection("prediction").doc(user.uid).get()
                     .then((doc) => {
@@ -54,12 +50,32 @@ firebase.auth().onAuthStateChanged(function(user) {
                 });
             });
 
+            window.onload = disableSelectForm;
+
+
         }
 
     } else {
         window.location.href = 'index.html';
     }
 });
+function disableSelectForm() {
+    const disableDate = new Date('2024-06-14T21:59:59'); // June 3, 2024, 8:00 PM
+    const currentDate = new Date();
+
+    let groups=['A','B','C','D','E','F'];
+    for(let i=0;i<6;i++)
+    {
+        for(let j=1;j<=4;j++){
+            if (currentDate >= disableDate) {
+                const selectForm = document.getElementById(`group${groups[i]}Select${j}`);
+                selectForm.disabled = true;
+            }
+        }
+
+    }
+
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -238,3 +254,5 @@ if(saveButtons)
 
 
 }
+
+
