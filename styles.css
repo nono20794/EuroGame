@@ -352,7 +352,23 @@ body{
     --input-group-addon-bg:transparent;
 }
 .groupA .card-header{
-    background-color: #34a853e0;
+    background-color: #00a75d;
+}
+.groupB .card-header{
+    background-color: #004f9f;
+
+}
+.groupC .card-header{
+    background-color: #e30613;
+}
+.groupD .card-header{
+    background-color: #f9b000;
+}
+.groupE .card-header{
+    background-color: #6298b7;
+}
+.groupF .card-header{
+    background-color: #32333b;
 }
 .img-team-group{
     height: 26px;
@@ -378,4 +394,49 @@ body{
 }
 .bi-pencil-square{
     cursor: pointer;
+}
+
+/*search country*/
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding-right: 30px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.country-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* max-height: 300px; */
+    overflow-y: auto;
+    /* border: 1px solid #ccc;
+    border-radius: 4px; */
+}
+
+.country-list li {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.country-list li:hover {
+    background-color: #f5f5f5;
+}
+
+.country-list li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

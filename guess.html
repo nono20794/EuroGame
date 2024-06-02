@@ -140,7 +140,7 @@
                                     <button class="btn  me-md-2 btn-outline-light" id="save-group-submit" type="submit">Save</button>
                                     <button class="btn  btn-outline-light btn-outline-light" type="button">Cancel</button>
                                 </div>
-                                <div class="row row-cols-1 row-cols-lg-2 g-3 mt-0 groups">
+                                <div class="row row-cols-1 row-cols-lg-2  g-3 mt-0 groups">
                                     <div class="col">
                                         <div class="card groupA h-100">
                                             <div class="card-header text-center text-white">
@@ -490,10 +490,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row border border-1 ">
-                            <div class="col-2">...</div>
-                            <div class="col"> name</div>
-
+                        <div class="container">
+                            <div class="search-container">
+                                <label for="searchInput"></label><input type="text" class="form-control search-input" placeholder="Search countries..." oninput="filterCountries()" id="searchInput">
+                                <i class="bi bi-search search-icon"></i>
+                            </div>
+                            <ul class="country-list mt-2"></ul>
                         </div>
                     </div>
                     <div class="modal-footer">
