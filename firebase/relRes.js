@@ -3,6 +3,26 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log(user.email);
         if(user.email !== 'admin@gmail.com')
             window.location.href = 'index.html';
+
+        const matches  = document.querySelectorAll('.match-group');
+        matches.forEach((matchInstance)=>{
+            const groupId = matchInstance.dataset.groupId;
+            const matchId = matchInstance.dataset.matchgroupId;
+            const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
+            const matchRef = GroupRef.collection("matches").doc(`match${matchId}`);
+            matchRef.get().
+            then((doc) => {
+                if (doc.exists) {
+                    matchInstance.querySelector('.teamA-points-real').value = doc.data().teamA_score;
+                    matchInstance.querySelector('.teamB-points-real').value = doc.data().teamB_score;
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        });
     }
     else{window.location.href = 'index.html';}
 })

@@ -51,14 +51,11 @@ firebase.auth().onAuthStateChanged(function(user) {
             matchRef.collection("prediction").doc(user.uid).get()
                 .then((doc) => {
                     if (doc.exists) {
-                        console.log(`group: ${groupId}`, `match: ${matchId}`)
-
                         matchInstance.querySelector('.teamA-points').value = doc.data().teamA_score;
                         matchInstance.querySelector('.teamB-points').value = doc.data().teamB_score;
-                        alert(`group: ${groups[i]}`+`match: ${matchId}`);
                     } else {
                         // doc.data() will be undefined in this case
-                        console.log("No such document!", `group: ${groups[i]}`, `match: ${matchId}`);
+                        console.log("No such document!");
                         return null;
 
                     }
