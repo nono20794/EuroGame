@@ -27,35 +27,45 @@ firebase.auth().onAuthStateChanged(function(user) {
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
+                    return null;
                 }
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
 
-            const matches  = document.querySelectorAll('.match-group');
-            matches.forEach((matchInstance)=>{
-                const matchId = matchInstance.dataset.matchgroupId;
-                const user = auth.currentUser;
 
-                const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
-                matchRef.collection("prediction").doc(user.uid).get()
-                    .then((doc) => {
-                        if (doc.exists) {
-                            matchInstance.querySelector('.teamA-points').value = doc.data().teamA_score;
-                            matchInstance.querySelector('.teamB-points').value = doc.data().teamB_score;
-                        } else {
-                            // doc.data() will be undefined in this case
-                            console.log("No such document!");
-                        }
-                    }).catch((error) => {
-                    console.log("Error getting document:", error);
-                });
-            });
 
             window.onload = disableSelectForm;
 
 
         }
+        const matches  = document.querySelectorAll('.match-group');
+        matches.forEach((matchInstance)=>{
+            const groupId= matchInstance.dataset.groupId;
+            const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
+
+            const matchId = matchInstance.dataset.matchgroupId;
+            const user = auth.currentUser;
+
+            const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
+            matchRef.collection("prediction").doc(user.uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        console.log(`group: ${groupId}`, `match: ${matchId}`)
+
+                        matchInstance.querySelector('.teamA-points').value = doc.data().teamA_score;
+                        matchInstance.querySelector('.teamB-points').value = doc.data().teamB_score;
+                        alert(`group: ${groups[i]}`+`match: ${matchId}`);
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.log("No such document!", `group: ${groups[i]}`, `match: ${matchId}`);
+                        return null;
+
+                    }
+                }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        });
 
     } else {
         window.location.href = 'index.html';
@@ -239,15 +249,18 @@ if(saveButtons)
 
                 const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
                 const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
-                matchRef.collection("prediction").doc(user.uid).set(updates)
-                    .then(() => {
-                        alert("Document successfully updated!");
-                    })
-                    .catch((error) => {
-                        // The document probably doesn't exist.
-                        console.error("Error updating document: ", error);
-                    });
-
+                const predRef = matchRef.collection("prediction").doc(user.uid);
+                const batch = firestore.batch();
+                // matchRef.collection("prediction").doc(user.uid).set(updates)
+                //     .then(() => {
+                //         alert("Document successfully updated!");
+                //     })
+                //     .catch((error) => {
+                //         // The document probably doesn't exist.
+                //         console.error("Error updating document: ", error);
+                //     });
+                batch.set(predRef, updates);
+                batch.commit();
             } else {
                 console.log('No match instance found for the clicked save button.');
             }

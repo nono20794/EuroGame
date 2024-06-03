@@ -462,7 +462,9 @@ body{
 }
 
 .teamA-points-real,
-.teamB-points-real{
+.teamB-points-real,
+.teamA-points,
+.teamB-points{
     width: 70px;
     height: 30px;
     background-color: transparent;
