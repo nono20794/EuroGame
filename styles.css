@@ -471,3 +471,15 @@ body{
     color: var(--color-default);
     text-align: center;
 }
+
+.res-page .card{
+    --bs-card-border-color: var(--color-default);
+    --bs-card-box-shadow: 0 0.5rem 0.5rem rgb(0 0 0 / 74%);
+    --bs-card-bg: transparent;
+
+}
+
+.res-page .card .list-group{
+    --bs-list-group-bg: transparent;
+    --bs-list-group-color: var(--color-default);
+}
