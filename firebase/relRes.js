@@ -4,6 +4,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         if(user.email !== 'admin@gmail.com')
             window.location.href = 'index.html';
 
+        //upload matches
         const matches  = document.querySelectorAll('.match-group');
         matches.forEach((matchInstance)=>{
             const groupId = matchInstance.dataset.groupId;
@@ -23,6 +24,39 @@ firebase.auth().onAuthStateChanged(function(user) {
                 console.log("Error getting document:", error);
             });
         });
+
+        //upload groups
+        let groups=['A','B','C','D','E','F']
+        for(let i=0;i<6;i++)
+        {
+            const GroupRef = firestore.collection("groups").doc(`group${groups[i]}`);
+            GroupRef.get().
+            then((doc) => {
+                if (doc.exists) {
+                    const docData = doc.data();
+                    console.log("Document data:", docData);
+
+                    // Iterate over the keys of the docData object
+                    const dataArray = Object.entries(docData);
+
+                    // Sort the array based on the values (in ascending order)
+                    dataArray.sort((a, b) => b[1] - a[1]);
+
+                    // Log the sorted data
+                    dataArray.forEach(([key, value]) => {
+                        console.log(`Field "${key}": ${value}`);
+                        const groupItem = document.querySelector(`.${key}`);
+                        groupItem.querySelector('.points-real').value = value;
+                    });
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        }
+
     }
     else{window.location.href = 'index.html';}
 })
