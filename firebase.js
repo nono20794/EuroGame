@@ -39,7 +39,9 @@ function register () {
                 group_Stages_Points : 0,
                 group_Standing_Points : 0,
                 knockout_Points: 0,
-                top_Scorer_points : 0
+                top_Scorer_points : 0,
+                exact_score_hit_percent :0,
+                group_stand_hit_percent:0
             }
 
             firestore.collection("users").doc(user.uid).set(user_data)
@@ -76,6 +78,20 @@ function logIn () {
         .catch((error) => {
             alert(error);
         })
+}
+
+const logoutButton = document.querySelector('.logout');
+if(logoutButton){
+    logoutButton.addEventListener('click',logOut)
+}
+function logOut(){
+    auth.signOut()
+        .then(()=>{
+            window.location.href='index.html';
+    })
+        .catch((error) => {
+        alert(error);
+    })
 }
 
 
