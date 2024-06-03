@@ -1,5 +1,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+        if(user.email!=='admin@gmail.com')
+            document.getElementById("real-admin-res").style.display= 'none';
         let groups=['A','B','C','D','E','F']
         for(let i=0;i<groups.length;i++){
             const GroupRef = firestore.collection("groups").doc(`group${groups[i]}`);

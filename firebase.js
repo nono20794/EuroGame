@@ -45,6 +45,7 @@ function register () {
             firestore.collection("users").doc(user.uid).set(user_data)
                 .then(() => {
                     console.log("Document successfully written!");
+                    window.location.href = 'home.html';
                 })
                 .catch((error) => {
                     console.error("Error writing document: ", error);
