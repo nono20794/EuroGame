@@ -28,20 +28,17 @@ if(saveButtons)
                 }
                 let points1=0;
                 let points2=0;
-                if(teamAPoints>teamBPoints){
+                if (teamAPoints>teamBPoints) {
                     points1=3;
                     points2=0;
-                }
-                else{
-                    if(teamAPoints === teamBPoints){
+                } else if (teamAPoints === teamBPoints) {
                     points1=1;
                     points2=1;
+                } else {
+                    points1=0;
+                    points2=3;
                 }
-                    else{
-                        points1=0;
-                        points2=3;
-                    }
-                }
+
 
                 const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
                 const batch = firestore.batch();
@@ -58,12 +55,7 @@ if(saveButtons)
                             console.log("Document data:", updatedGroupData);
                             batch.update(GroupRef, updatedGroupData);
                             batch.commit();
-                                // .then(() => {
-                                //     console.log("Document successfully written!");
-                                // })
-                                // .catch((error) => {
-                                //     console.error("Error writing document: ", error);
-                                // });
+
                         } else {
                             // doc.data() will be undefined in this case
                             console.log("No such document!");
@@ -81,8 +73,89 @@ if(saveButtons)
                     .catch((error) => {
                         console.error("Error writing document: ", error);
                     });
+                updateUserScores(matchId,groupId,teamAPoints,teamBPoints);
 
             }
         })
     })
+}
+
+function updateUserScores(matchId, groupId, teamAPoints, teamBPoints)
+{
+    const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
+    const matchRef= GroupRef.collection("matches").doc(`match${matchId}`);
+    const batch = firestore.batch();
+    matchRef.collection("prediction").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            // const guessTeamA = doc.data().teamA;
+            // const guessTeamB = doc.data().teamB;
+            const guessTeamAPoints = doc.data().teamA_score;
+            const guessTeamBPoints = doc.data().teamB_score;
+            let points = 0;
+            if (teamAPoints>teamBPoints){
+                if(guessTeamAPoints>guessTeamBPoints){
+                    points=points+3;
+                    if((guessTeamAPoints === teamAPoints) && (guessTeamBPoints === teamBPoints))
+                    {
+                        points = points+1;
+                        if((teamBPoints+teamAPoints) >= 4)
+                        {
+                            points=points+1;
+                        }
+                    }
+                }
+            }
+            else if (teamAPoints === teamBPoints){
+                if(guessTeamAPoints === guessTeamBPoints)
+                {
+                    points=points+3;
+                    if((guessTeamAPoints === teamAPoints) && (guessTeamBPoints === teamBPoints))
+                    {
+                        points = points+1;
+                        if((teamBPoints+teamAPoints) >= 4)
+                        {
+                            points=points+1;
+                        }
+                    }
+                }
+            }
+            else{
+                if(guessTeamAPoints < guessTeamBPoints)
+                {
+                    points=points+3;
+                    if((guessTeamAPoints === teamAPoints) && (guessTeamBPoints === teamBPoints))
+                    {
+                        points = points+1;
+                        if((teamBPoints+teamAPoints) >= 4)
+                        {
+                            points=points+1;
+                        }
+                    }
+                }
+            }
+            const userRef = firestore.collection("users").doc(doc.id);
+
+            userRef.get().then((userDoc) => {
+                if (userDoc.exists) {
+                    let userData =userDoc.data();
+                    console.log("Document data:", userDoc.data());
+                    const updatedGroupData = {
+                        total_points: userData['total_points'] ? userData['total_points'] + points : points,
+                        group_Stages_Points: userData['group_Stages_Points'] ? userData['group_Stages_Points'] + points : points,
+                    };
+                    console.log(updatedGroupData)
+                    batch.update(userRef, updatedGroupData);
+                    batch.commit();
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+
+        });
+    });
 }
