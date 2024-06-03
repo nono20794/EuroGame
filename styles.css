@@ -292,10 +292,25 @@ body{
         width:100%;
     }
 }
-.nav-tabs .nav-link{
+.nav-tabs .nav-link,
+.nav-tabs-real .nav-link{
     color: var(--color-default);
 }
-.nav-tabs .nav-link.active{
+.nav-tabs-real{
+    /*border: 1px solid var(--color-default);*/
+    border-radius: 8px 8px 0 0;
+    justify-content: center;
+}
+.nav-tabs-real .nav-link{
+    border-radius: 8px;
+}
+.nav-tabs .nav-link.active,
+.nav-tabs-real .nav-link.active{
+    background-color: var( --light-orange);
+    border: 1px solid var( --light-orange); ;
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs-real .nav-link:hover{
     background-color: #E9C46A;
     border: 1px solid #E9C46A; ;
 }
@@ -348,9 +363,9 @@ body{
 .team-img{
     --bs-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 55%);
 }
-.score-in {
-    --input-group-addon-bg:transparent;
-}
+/*.score-in {*/
+/*    --input-group-addon-bg:transparent;*/
+/*}*/
 .groupA .card-header{
     background-color: #00a75d;
 }
@@ -439,4 +454,18 @@ body{
     width: 20px;
     height: 20px;
     margin-right: 10px;
+}
+
+.points-real{
+    width: 50px;
+    text-align: center;
+}
+
+.teamA-points-real,
+.teamB-points-real{
+    width: 70px;
+    height: 30px;
+    background-color: transparent;
+    color: var(--color-default);
+    text-align: center;
 }

@@ -34,7 +34,7 @@
                             <img src="images/trophy.svg" alt="" class="me-sm-3 me-md-0">Results</a>
                     </li>
                     <li class="nav-item align-items-center text-nowrap">
-                        <a class="nav-link active d-flex flex-md-column align-items-center justify-content-center" aria-current="page" href="guess.html">
+                        <a class="nav-link  d-flex flex-md-column align-items-center justify-content-center"  href="guess.html">
                             <img src="images/scoreboard.svg" alt="" class="me-sm-3 me-md-0">Your Guesses</a>
                     </li>
 
@@ -58,7 +58,308 @@
         </div>
     </nav>
 </header>
+    <main class="py-3">
+        <div class="container-fluid mt-2 px-md-5">
+            <div class="row">
+                <ul class="nav nav-tabs-real" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Match Scores</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Group Standing</button>
+                    </li>
+<!--                    <li class="nav-item" role="presentation">-->
+<!--                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#knockout-tab-pane" type="button" role="tab" aria-controls="knockout-tab-pane" aria-selected="false">Contact</button>-->
+<!--                    </li>-->
 
+                </ul>
+
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-9">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                            <span class="match-date p-0 ms-0 text-white">Friday, June 16</span>
+                            <div class = "match-group" data-matchGroup-id="1" data-group-id ="A">
+                                <div class="row d-flex border border-1 border-white py-1 shadow text-white align-items-center justify-content-between">
+                                    <div class="col align-items-center justify-content-start">
+                                        <img src="flags/Germany.svg" alt="" height="40" width="40" class="img-fluid team-img shadow me-2 my-auto">
+                                        <span class="teamA my-auto">Germany</span>
+                                    </div>
+                                    <div class="col d-flex flex-row align-items-center justify-content-center">
+                                        <input type="text" class="teamA-points-real " aria-label="teamA-points">
+                                        <span class="mx-1 mb-2" style="font-size: 30px">:</span>
+                                        <input type="text" class="teamB-points-real " aria-label="teamA-points">
+                                    </div>
+                                    <div class="col  justify-content-end text-end ">
+                                        <span class="teamA my-auto me-2">Scotland</span>
+                                        <img src="flags/Scotland.svg" alt="" height="40" width="40" class="img-fluid team-img shadow my-auto">
+                                    </div>
+                                </div>
+                                <div class="d-grid d-flex justify-content-center pt-2">
+                                    <button class="btn  p-1 btn-outline-light btn-sm save-group-match-submit"  type="submit">Save</button>
+                                </div>
+                            </div>
+                            <span class="match-date p-0 ms-0 text-white">Saturday, June 17</span>
+                            <div class = "match-group" data-matchGroup-id="2" data-group-id ="A">
+                                <div class="row d-flex border border-1 border-white py-1 shadow text-white align-items-center justify-content-between">
+                                    <div class="col align-items-center justify-content-start">
+                                        <img src="flags/Hungary.svg" alt="" height="40" width="40" class="img-fluid team-img shadow me-2 my-auto">
+                                        <span class="teamA my-auto">Hungary</span>
+                                    </div>
+                                    <div class="col d-flex flex-row align-items-center justify-content-center">
+                                        <input type="text" class="teamA-points-real " aria-label="teamA-points">
+                                        <span class="mx-1 mb-2" style="font-size: 30px">:</span>
+                                        <input type="text" class="teamB-points-real " aria-label="teamA-points">
+                                    </div>
+                                    <div class="col  justify-content-end text-end ">
+                                        <span class="teamA my-auto me-2">Switzerland</span>
+                                        <img src="flags/Switzerland.svg" alt="" height="40" width="40" class="img-fluid team-img shadow my-auto">
+                                    </div>
+                                </div>
+                                <div class="d-grid d-flex justify-content-center py-2">
+                                    <button class="btn  p-1 btn-outline-light btn-sm save-group-match-submit"  type="submit">Save</button>
+                                </div>
+                            </div>
+                            <div class = "match-group" data-matchGroup-id="1" data-group-id ="B">
+                                <div class="row d-flex border border-1 border-white py-1 shadow text-white align-items-center justify-content-between">
+                                    <div class="col align-items-center justify-content-start">
+                                        <img src="flags/Spain.svg" alt="" height="40" width="40" class="img-fluid team-img shadow me-2 my-auto">
+                                        <span class="teamA my-auto">Spain</span>
+                                    </div>
+                                    <div class="col d-flex flex-row align-items-center justify-content-center">
+                                        <input type="text" class="teamA-points-real " aria-label="teamA-points">
+                                        <span class="mx-1 mb-2" style="font-size: 30px">:</span>
+                                        <input type="text" class="teamB-points-real " aria-label="teamA-points">
+                                    </div>
+                                    <div class="col  justify-content-end text-end ">
+                                        <span class="teamA my-auto me-2">Croatia</span>
+                                        <img src="flags/Croatia.svg" alt="" height="40" width="40" class="img-fluid team-img shadow my-auto">
+                                    </div>
+                                </div>
+                                <div class="d-grid d-flex justify-content-center py-2">
+                                    <button class="btn  p-1 btn-outline-light btn-sm save-group-match-submit"  type="submit">Save</button>
+                                </div>
+                            </div>
+                            <div class = "match-group" data-matchGroup-id="2" data-group-id ="B">
+                                <div class="row d-flex border border-1 border-white py-1 shadow text-white align-items-center justify-content-between">
+                                    <div class="col align-items-center justify-content-start">
+                                        <img src="flags/Italy.svg" alt="" height="40" width="40" class="img-fluid team-img shadow me-2 my-auto">
+                                        <span class="teamA my-auto">Italy</span>
+                                    </div>
+                                    <div class="col d-flex flex-row align-items-center justify-content-center">
+                                        <input type="text" class="teamA-points-real " aria-label="teamA-points">
+                                        <span class="mx-1 mb-2" style="font-size: 30px">:</span>
+                                        <input type="text" class="teamB-points-real " aria-label="teamA-points">
+                                    </div>
+                                    <div class="col  justify-content-end text-end">
+                                        <span class="teamA my-auto me-2">Albania</span>
+                                        <img src="flags/Albania.svg" alt="" height="40" width="40" class="img-fluid team-img shadow my-auto">
+                                    </div>
+                                </div>
+                                <div class="d-grid d-flex justify-content-center py-2">
+                                    <button class="btn  p-1 btn-outline-light btn-sm save-group-match-submit"  type="submit">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                            <div class="d-grid gap-2 d-flex justify-content-end pt-2">
+                                <button class="btn  me-md-2 btn-outline-light" id="save-group-submit" type="submit">Save</button>
+                                <button class="btn  btn-outline-light btn-outline-light" type="button">Cancel</button>
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4   g-3 mt-0 groups">
+                                <div class="col">
+                                    <div class="card groupA h-100">
+                                        <div class="card-header text-center text-white">
+                                            Group A
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex flex-row justify-content-end py-0 points-header pe-4"><span>pts</span></li>
+                                            <li class="list-group-item d-flex flex-row align-items-center justify-content-between px-2">
+                                                <img src="flags/Germany.svg" alt="" class="img-fluid img-team-group me-2" id="groupAFlag1">
+                                                <span class="country ms-4" id="groupASelect1">Germany</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Scotland.svg" alt="" class="img-fluid img-team-group me-2" id="groupAFlag2">
+                                                <span class="country ms-4" id="groupASelect2">Scotland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Hungary.svg" alt="" class="img-fluid img-team-group me-2" id="groupAFlag3">
+                                                <span class="country ms-4" id="groupASelect3">Hungary</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Switzerland.svg" alt="" class="img-fluid img-team-group me-2" id="groupAFlag4">
+                                                <span class="country ms-4" id="groupASelect4">Switzerland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card groupB h-100">
+                                        <div class="card-header text-center text-white">
+                                            Group B
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex flex-row justify-content-end py-0 points-header pe-4"><span>pts</span></li>
+                                            <li class="list-group-item d-flex flex-row align-items-center justify-content-between px-2">
+                                                <img src="flags/Germany.svg" alt="" class="img-fluid img-team-group me-2" id="groupBFlag1">
+                                                <span class="country ms-4" id="groupBSelect1">Germany</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Scotland.svg" alt="" class="img-fluid img-team-group me-2" id="groupBFlag2">
+                                                <span class="country ms-4" id="groupBSelect2">Scotland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Hungary.svg" alt="" class="img-fluid img-team-group me-2" id="groupBFlag3">
+                                                <span class="country ms-4" id="groupBSelect3">Hungary</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Switzerland.svg" alt="" class="img-fluid img-team-group me-2" id="groupBFlag4">
+                                                <span class="country ms-4" id="groupBSelect4">Switzerland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card groupC h-100">
+                                        <div class="card-header text-center text-white">
+                                            Group C
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex flex-row justify-content-end py-0 points-header pe-4"><span>pts</span></li>
+                                            <li class="list-group-item d-flex flex-row align-items-center justify-content-between px-2">
+                                                <img src="flags/Germany.svg" alt="" class="img-fluid img-team-group me-2" id="groupCFlag1">
+                                                <span class="country ms-4" id="groupCSelect1">Germany</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Scotland.svg" alt="" class="img-fluid img-team-group me-2" id="groupCFlag2">
+                                                <span class="country ms-4" id="groupCSelect2">Scotland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Hungary.svg" alt="" class="img-fluid img-team-group me-2" id="groupCFlag3">
+                                                <span class="country ms-4" id="groupCSelect3">Hungary</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Switzerland.svg" alt="" class="img-fluid img-team-group me-2" id="groupCFlag4">
+                                                <span class="country ms-4" id="groupCSelect4">Switzerland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card groupD h-100">
+                                        <div class="card-header text-center text-white">
+                                            Group D
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex flex-row justify-content-end py-0 points-header pe-4"><span>pts</span></li>
+                                            <li class="list-group-item d-flex flex-row align-items-center justify-content-between px-2">
+                                                <img src="flags/Germany.svg" alt="" class="img-fluid img-team-group me-2" id="groupDFlag1">
+                                                <span class="country ms-4" id="groupDSelect1">Germany</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Scotland.svg" alt="" class="img-fluid img-team-group me-2" id="groupDFlag2">
+                                                <span class="country ms-4" id="groupDSelect2">Scotland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Hungary.svg" alt="" class="img-fluid img-team-group me-2" id="groupDFlag3">
+                                                <span class="country ms-4" id="groupDSelect3">Hungary</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Switzerland.svg" alt="" class="img-fluid img-team-group me-2" id="groupDFlag4">
+                                                <span class="country ms-4" id="groupDSelect4">Switzerland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card groupE h-100">
+                                        <div class="card-header text-center text-white">
+                                            Group E
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex flex-row justify-content-end py-0 points-header pe-4"><span>pts</span></li>
+                                            <li class="list-group-item d-flex flex-row align-items-center justify-content-between px-2">
+                                                <img src="flags/Germany.svg" alt="" class="img-fluid img-team-group me-2" id="groupEFlag1">
+                                                <span class="country ms-4" id="groupESelect1">Germany</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Scotland.svg" alt="" class="img-fluid img-team-group me-2" id="groupEFlag2">
+                                                <span class="country ms-4" id="groupESelect2">Scotland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Hungary.svg" alt="" class="img-fluid img-team-group me-2" id="groupEFlag3">
+                                                <span class="country ms-4" id="groupESelect3">Hungary</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Switzerland.svg" alt="" class="img-fluid img-team-group me-2" id="groupEFlag4">
+                                                <span class="country ms-4" id="groupESelect4">Switzerland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card groupF h-100">
+                                        <div class="card-header text-center text-white">
+                                            Group F
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex flex-row justify-content-end py-0 points-header pe-4"><span>pts</span></li>
+                                            <li class="list-group-item d-flex flex-row align-items-center justify-content-between px-2">
+                                                <img src="flags/Germany.svg" alt="" class="img-fluid img-team-group me-2" id="groupFFlag1">
+                                                <span class="country ms-4" id="groupFSelect1">Germany</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Scotland.svg" alt="" class="img-fluid img-team-group me-2" id="groupFFlag2">
+                                                <span class="country ms-4" id="groupFSelect2">Scotland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Hungary.svg" alt="" class="img-fluid img-team-group me-2" id="groupFFlag3">
+                                                <span class="country ms-4" id="groupFSelect3">Hungary</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                            <li class="list-group-item d-flex flex-row align-items-center px-2">
+                                                <img src="flags/Switzerland.svg" alt="" class="img-fluid img-team-group me-2" id="groupFFlag4">
+                                                <span class="country ms-4" id="groupFSelect4">Switzerland</span>
+                                                <input class="ms-auto points-real " type="text" aria-label="team-points">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    <div class="tab-pane fade show active" id="knockout-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">-->
+                        <!--                        -->
+                        <!--                    </div>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>

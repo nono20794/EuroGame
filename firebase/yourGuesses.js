@@ -165,7 +165,7 @@ function updateImage(imgElement, selectedValue) {
             flagSrc = 'flags/Portugal.svg';
             break;
         case 'czechia':
-            flagSrc = 'flags/Czech-Republic.svg';
+            flagSrc = 'flags/Czechia.svg';
             break;
         case 'georgia':
             flagSrc = 'flags/Georgia.svg';
