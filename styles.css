@@ -428,6 +428,11 @@ body{
     background-color: transparent;
     color: var(--color-default);
     text-align: center;
+    border: 1px solid var(--green-blue)
+}
+.match-group .colTeamB span,
+.match-group .colTeamA img{
+    margin-right: 8px;
 }
 
 .res-page .card{
@@ -452,4 +457,54 @@ body{
 }
 .team-modal-list-item.active:hover{
     background-color: #0d6efd;
+}
+@media (max-width: 460px)
+{
+    .teamA-points-real,
+    .teamB-points-real,
+    .teamA-points,
+    .teamB-points{
+        width: 50px;
+
+    }
+    .match-group .col{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .match-group .colTeamB span,
+    .match-group .colTeamA img{
+        margin-right: 2px;
+    }
+    .match-group{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 363px)
+{
+    .teamA-points-real,
+    .teamB-points-real,
+    .teamA-points,
+    .teamB-points{
+        width: 40px;
+
+    }
+    .match-group{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 339px)
+{
+    .teamA-points-real,
+    .teamB-points-real,
+    .teamA-points,
+    .teamB-points{
+        width: 30px;
+
+    }
+
+    .match-group{
+        font-size: 12px;
+    }
 }
