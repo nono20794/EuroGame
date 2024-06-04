@@ -366,8 +366,8 @@ function saveTeam(){
         const selectedItemText = selectedItem.textContent;
         console.log('Selected item:', selectedItemText);
         // You can perform additional actions here with the selected item text
+
     } else {
         console.log('No item selected');
     }
-    console.log()
 }
