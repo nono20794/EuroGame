@@ -344,8 +344,8 @@ body{
 }
 
 .avatar-container img {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
 }
 
 .avatar-icon {
@@ -411,50 +411,8 @@ body{
     cursor: pointer;
 }
 
-/*search country*/
-.search-container {
-    position: relative;
-}
 
-.search-input {
-    width: 100%;
-    padding-right: 30px;
-}
 
-.search-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    color: #888;
-}
-
-.country-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    /* max-height: 300px; */
-    overflow-y: auto;
-    /* border: 1px solid #ccc;
-    border-radius: 4px; */
-}
-
-.country-list li {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.country-list li:hover {
-    background-color: #f5f5f5;
-}
-
-.country-list li img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
 
 .points-real{
     width: 50px;
