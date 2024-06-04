@@ -363,10 +363,11 @@ if(saveTeamModal)
 function saveTeam(){
     const selectedItem = document.querySelector('.team-modal-list-item.active');
     if (selectedItem) {
-        const selectedItemText = selectedItem.textContent;
+        const selectedItemText = selectedItem.textContent.trim();
         console.log('Selected item:', selectedItemText);
         // You can perform additional actions here with the selected item text
-
+        document.querySelector(".teamWinImg").src = `rounded-flags/${selectedItemText}.svg`;
+        document.querySelector('.teamWinName').innerText = selectedItemText;
     } else {
         console.log('No item selected');
     }
