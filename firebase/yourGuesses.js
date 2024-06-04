@@ -12,12 +12,11 @@ firebase.auth().onAuthStateChanged(function(user) {
                         .then((groupDoc)=>{
                             if(groupDoc.exists){
                                 let groupData = groupDoc.data()
-                                console.log("Document data guess:", doc.data());
+                                console.log("Document data:", doc.data());
                                 let selectVal = document.getElementById(`group${groups[i]}Select1`)
                                 selectVal.value = doc.data().team1;
                                 updateImage(document.getElementById(`group${groups[i]}Flag1`), selectVal.value);
                                 if(selectVal.value !== 'Select country'){
-                                    console.log(selectVal.value);
                                     document.getElementById(`group${groups[i]}Select1Points`).innerText=groupData[selectVal.value];
                                 }
                                 selectVal = document.getElementById(`group${groups[i]}Select2`);
@@ -40,14 +39,30 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 }
                             }
                             else{
-                                console.log("No such document!");
+                                console.log("Document data:", doc.data());
+                                let selectVal = document.getElementById(`group${groups[i]}Select1`)
+                                selectVal.value = doc.data().team1;
+                                updateImage(document.getElementById(`group${groups[i]}Flag1`), selectVal.value);
+
+                                selectVal = document.getElementById(`group${groups[i]}Select2`);
+                                selectVal.value = doc.data().team2;
+                                updateImage(document.getElementById(`group${groups[i]}Flag2`), selectVal.value);
+
+                                selectVal = document.getElementById(`group${groups[i]}Select3`);
+                                selectVal.value = doc.data().team3;
+                                updateImage(document.getElementById(`group${groups[i]}Flag3`), selectVal.value);
+
+                                selectVal = document.getElementById(`group${groups[i]}Select4`);
+                                selectVal.value = doc.data().team4;
+                                updateImage(document.getElementById(`group${groups[i]}Flag4`), selectVal.value);
+
                             }
                         })
                         .catch((error)=>{console.log("Error getting document:", error);})
 
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    console.log("No such user document!");
                     return null;
                 }
             }).catch((error) => {
@@ -306,59 +321,3 @@ const countries = [
 const countryList = document.querySelector('.country-list');
 const searchInput = document.getElementById('searchInput');
 
-function filterCountries() {
-    const filter = searchInput.value.toLowerCase();
-
-    countryList.innerHTML = '';
-
-    if (filter === '') {
-        // Display all countries when no value is entered
-        countries.forEach(country => {
-            const li = document.createElement('li');
-            const img = document.createElement('img');
-            img.src = country.flag;
-            img.alt = country.name;
-            li.appendChild(img);
-            li.appendChild(document.createTextNode(country.name));
-            li.addEventListener('click', () => selectCountry(country.name));
-            countryList.appendChild(li);
-        });
-    } else {
-        // Filter and sort countries based on user input
-        const matchingCountries = countries.filter(country => {
-            const countryName = country.name.toLowerCase();
-            return countryName.startsWith(filter) || countryName.includes(filter);
-        });
-
-        const sortedCountries = matchingCountries.sort((a, b) => {
-            const aName = a.name.toLowerCase();
-            const bName = b.name.toLowerCase();
-            if (aName.startsWith(filter) && !bName.startsWith(filter)) {
-                return -1;
-            } else if (!aName.startsWith(filter) && bName.startsWith(filter)) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-
-        sortedCountries.forEach(country => {
-            const li = document.createElement('li');
-            const img = document.createElement('img');
-            img.src = country.flag;
-            img.alt = country.name;
-            li.appendChild(img);
-            li.appendChild(document.createTextNode(country.name));
-            li.addEventListener('click', () => selectCountry(country.name));
-            countryList.appendChild(li);
-        });
-    }
-}
-
-function selectCountry(countryName) {
-    searchInput.value = countryName;
-
-    filterCountries();
-}
-// Initially populate the list with all countries
-filterCountries();
