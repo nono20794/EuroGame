@@ -2,6 +2,23 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         if(user.email!=='admin@gmail.com')
             document.getElementById("real-admin-res").style.display= 'none';
+
+        const userRef = firestore.collection('users').doc(user.uid);
+        userRef.get()
+            .then((userDoc)=>{
+                if(userDoc.exists){
+                    const firstName = userDoc.data().first_name;
+                    const lastName = userDoc.data().last_name;
+                    document.querySelector(".fullName").innerHTML=`${firstName} ${lastName}`
+                }
+                else{
+                    console.log("no such user doc")
+                }
+            })
+            .catch((error)=>{
+                console.log("Error getting document:", error);
+            });
+
         let groups=['A','B','C','D','E','F']
         for(let i=0;i<groups.length;i++){
             const GroupRef = firestore.collection("groups").doc(`group${groups[i]}`);
