@@ -10,6 +10,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                     const firstName = userDoc.data().first_name;
                     const lastName = userDoc.data().last_name;
                     document.querySelector(".fullName").innerHTML=`${firstName} ${lastName}`
+                    const team = userDoc.data().win_team;
+                    document.querySelector(".teamWinImg").src = `rounded-flags/${team}.svg`;
+                    document.querySelector('.teamWinName').innerText = team;
                 }
                 else{
                     console.log("no such user doc")
@@ -143,6 +146,30 @@ function disableSelectForm() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    firebase.auth().onAuthStateChanged(function (user){
+        if (user) {
+                const userRef = firestore.collection('users').doc(user.uid);
+                userRef.get()
+                    .then((userDoc)=>{
+                        if(userDoc.exists){
+                            const firstName = userDoc.data().first_name;
+                            const lastName = userDoc.data().last_name;
+                            document.querySelector(".fullName").innerHTML=`${firstName} ${lastName}`
+                            const team = userDoc.data().win_team;
+                            document.querySelector(".teamWinImg").src = `rounded-flags/${team}.svg`;
+                            document.querySelector('.teamWinName').innerText = team;
+                        }
+                        else{
+                            console.log("no such user doc")
+                        }
+                    })
+                    .catch((error)=>{
+                        console.log("Error getting document:", error);
+                    });
+        }
+
+    });
+
     const selectElements = document.querySelectorAll('select.form-select');
 
     selectElements.forEach(select => {
@@ -326,7 +353,7 @@ const listItems = document.querySelectorAll('.team-modal-list-item');
 
 
 // Get the search input field
-const searchInput = document.getElementById('ModalSearchInputTeam');
+const searchInput = document.getElementById('TeamModalSearchInputTeam');
 
 // Add event listener to the search input field
 searchInput.addEventListener('input', function() {
@@ -368,6 +395,15 @@ function saveTeam(){
         // You can perform additional actions here with the selected item text
         document.querySelector(".teamWinImg").src = `rounded-flags/${selectedItemText}.svg`;
         document.querySelector('.teamWinName').innerText = selectedItemText;
+        firebase.auth().onAuthStateChanged(function (user){
+            if (user)
+                console.log(user.uid)
+            const userRef = firestore.collection("users").doc(user.uid);
+            const batch = firestore.batch();
+            batch.update(userRef, {win_team: selectedItemText});
+            batch.commit();
+        });
+
     } else {
         console.log('No item selected');
     }

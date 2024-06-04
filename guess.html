@@ -61,7 +61,7 @@
         <main class="py-3" >
             <div class="container-fluid mt-2 px-md-3 ">
                 <div class="row justify-content-between">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="card mb-5 mt-0">
                             <div class="card-header d-flex flex-column justify-content-center align-items-center">
                                 <div class="avatar-container ">
@@ -69,18 +69,18 @@
                                 </div>
                                 <h6 class="mb-0 fs-sm fullName"></h6>
                             </div>
-                            <div class="card-body d-flex justify-content-between ps-5 pe-4">
+                            <div class="card-body d-flex justify-content-around px-2">
                                 <div class="team d-flex flex-column justify-content-center align-items-center">
                                     <div class="avatar-container ">
-                                        <img src="rounded-flags/Scotland.svg" alt="Avatar" class="rounded-circle mb-1 teamWinImg" >
-                                        <span class="avatar-icon"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-modal-init data-bs-target="#exampleModal"></i></span>
+                                        <img src="images/card-image.svg" alt="Avatar" class="rounded-circle mb-1 teamWinImg" >
+                                        <span class="avatar-icon"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-modal-init data-bs-target="#TeamModal"></i></span>
                                     </div>
                                     <span class="mb-0 fs-sm teamWinName">Team</span>
                                 </div>
                                 <div class="player d-flex flex-column justify-content-center align-items-center">
                                     <div class="avatar-container ">
-                                        <img src="https://picsum.photos/90/90" alt="Avatar" class="rounded-circle mb-1 ScorerImg">
-                                        <span class="avatar-icon"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-modal-init data-bs-target="#exampleModal"></i></span>
+                                        <img src="images/card-image.svg" alt="Avatar" class="rounded-circle mb-1 ScorerImg">
+                                        <span class="avatar-icon"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-modal-init data-bs-target="#TeamModal"></i></span>
                                     </div>
                                     <span class="mb-0 fs-sm">Scorer</span>
                                 </div>
@@ -534,17 +534,17 @@
             </div>
         </main>
 
-        <div class="modal top fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal top fade " id="TeamModal" tabindex="-1" aria-labelledby="TeamModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog  modal-md modal-dialog-scrollable modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="TeamModalLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
                             <div class="input-group rounded mb-2">
-                                <input type="search" class="form-control rounded" id="ModalSearchInputTeam" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <input type="search" class="form-control rounded" id="TeamModalSearchInputTeam" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                 <span class="input-group-text border-0" id="search-addon">
                                 <i class="bi bi-search"></i>
                             </span>
@@ -582,6 +582,40 @@
                             Close
                         </button>
                         <button type="button" class="btn btn-primary" id="modalSaveTeam">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal top fade " id="PlayerModal" tabindex="-1" aria-labelledby="PlayerModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog  modal-md modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PlayerModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="input-group rounded mb-2">
+                                <input type="search" class="form-control rounded" id="PlayerModalSearchInputTeam" placeholder="Search" aria-label="Search" aria-describedby="search-addon2" />
+                                <span class="input-group-text border-0" id="search-addon2">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item active team-modal-list-item" > <img src="flags/Albania.svg" alt="" width="30" class="me-2">Albania</li>
+                                <li class="list-group-item team-modal-list-item"><img src="flags/Austria.svg" alt="" width="30" class="me-2">Austria</li>
+                                <li class="list-group-item team-modal-list-item"><img src="flags/Belgium.svg" alt="" width="30" class="me-2">Belgium</li>
+                                <li class="list-group-item team-modal-list-item"><img src="flags/Croatia.svg" alt="" width="30" class="me-2">Croatia</li>
+                                <li class="list-group-item team-modal-list-item"><img src="flags/Czechia.svg" alt="" width="30" class="me-2">Czechia</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" id="modalSavePlayer">Save changes</button>
                     </div>
                 </div>
             </div>
