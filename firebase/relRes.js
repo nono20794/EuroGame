@@ -93,7 +93,7 @@ if(saveButtons)
                     points2=3;
                 }
 
-
+                //save group points
                 const GroupRef = firestore.collection("groups").doc(`group${groupId}`);
                 const batch = firestore.batch();
                 let docData;
@@ -111,14 +111,21 @@ if(saveButtons)
                             batch.commit();
 
                         } else {
+                            updatedGroupData = {
+                                [teamA]: points1,
+                                [teamB]: points2,
+                            };
                             // doc.data() will be undefined in this case
+                            console.log("Document data:", updatedGroupData);
+                            batch.set(GroupRef, updatedGroupData);
+                            batch.commit();
                             console.log("No such document!");
-                            return null;
                         }
                     }).catch((error) => {
                     console.log("Error getting document:", error);
                 });
 
+                //save match score
                 GroupRef.collection("matches").doc(`match${matchId}`).set(data)
                     .then(() => {
                         console.log("Document successfully written!");
@@ -127,6 +134,7 @@ if(saveButtons)
                     .catch((error) => {
                         console.error("Error writing document: ", error);
                     });
+                //update user points
                 updateUserScores(matchId,groupId,teamAPoints,teamBPoints);
 
             }

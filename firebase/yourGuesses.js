@@ -8,22 +8,43 @@ firebase.auth().onAuthStateChanged(function(user) {
             let docRefStand = GroupRef.collection("standing_predictions").doc(user.uid)
             docRefStand.get().then((doc) => {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data());
-                    let selectVal = document.getElementById(`group${groups[i]}Select1`)
-                    selectVal.value = doc.data().team1;
-                    updateImage(document.getElementById(`group${groups[i]}Flag1`), selectVal.value);
+                    GroupRef.get()
+                        .then((groupDoc)=>{
+                            if(groupDoc.exists){
+                                let groupData = groupDoc.data()
+                                console.log("Document data guess:", doc.data());
+                                let selectVal = document.getElementById(`group${groups[i]}Select1`)
+                                selectVal.value = doc.data().team1;
+                                updateImage(document.getElementById(`group${groups[i]}Flag1`), selectVal.value);
+                                if(selectVal.value !== 'Select country'){
+                                    console.log(selectVal.value);
+                                    document.getElementById(`group${groups[i]}Select1Points`).innerText=groupData[selectVal.value];
+                                }
+                                selectVal = document.getElementById(`group${groups[i]}Select2`);
+                                selectVal.value = doc.data().team2;
+                                updateImage(document.getElementById(`group${groups[i]}Flag2`), selectVal.value);
+                                if(selectVal.value !== 'Select country'){
+                                    document.getElementById(`group${groups[i]}Select2Points`).innerText=groupData[selectVal.value];
+                                }
+                                selectVal = document.getElementById(`group${groups[i]}Select3`);
+                                selectVal.value = doc.data().team3;
+                                updateImage(document.getElementById(`group${groups[i]}Flag3`), selectVal.value);
+                                if(selectVal.value !== 'Select country'){
+                                    document.getElementById(`group${groups[i]}Select3Points`).innerText=groupData[selectVal.value];
+                                }
+                                selectVal = document.getElementById(`group${groups[i]}Select4`);
+                                selectVal.value = doc.data().team4;
+                                updateImage(document.getElementById(`group${groups[i]}Flag4`), selectVal.value);
+                                if(selectVal.value !== 'Select country'){
+                                    document.getElementById(`group${groups[i]}Select4Points`).innerText=groupData[selectVal.value];
+                                }
+                            }
+                            else{
+                                console.log("No such document!");
+                            }
+                        })
+                        .catch((error)=>{console.log("Error getting document:", error);})
 
-                    selectVal = document.getElementById(`group${groups[i]}Select2`);
-                    selectVal.value = doc.data().team2;
-                    updateImage(document.getElementById(`group${groups[i]}Flag2`), selectVal.value);
-
-                    selectVal = document.getElementById(`group${groups[i]}Select3`);
-                    selectVal.value = doc.data().team3;
-                    updateImage(document.getElementById(`group${groups[i]}Flag3`), selectVal.value);
-
-                    selectVal = document.getElementById(`group${groups[i]}Select4`);
-                    selectVal.value = doc.data().team4;
-                    updateImage(document.getElementById(`group${groups[i]}Flag4`), selectVal.value);
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -32,6 +53,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
+
+
 
 
 
@@ -103,81 +126,81 @@ function updateImage(imgElement, selectedValue) {
     let flagSrc;
     switch (selectedValue) {
         //GROUP A
-        case 'germany':
+        case 'Germany':
             flagSrc = 'flags/Germany.svg';
             break;
-        case 'switzerland':
+        case 'Switzerland':
             flagSrc = 'flags/Switzerland.svg';
             break;
-        case 'hungary':
+        case 'Hungary':
             flagSrc = 'flags/Hungary.svg';
             break;
-        case 'scotland':
+        case 'Scotland':
             flagSrc = 'flags/Scotland.svg';
             break;
         //GROUP B
-        case 'spain':
+        case 'Spain':
             flagSrc = 'flags/Spain.svg';
             break;
-        case 'croatia':
+        case 'Croatia':
             flagSrc = 'flags/Croatia.svg';
             break;
-        case 'italy':
+        case 'Italy':
             flagSrc = 'flags/Italy.svg';
             break;
-        case 'albania':
+        case 'Albania':
             flagSrc = 'flags/Albania.svg';
             break;
         //GROUP C
-        case 'england':
+        case 'England':
             flagSrc = 'flags/England.svg';
             break;
-        case 'slovenia':
+        case 'Slovenia':
             flagSrc = 'flags/Slovenia.svg';
             break;
-        case 'denmark':
+        case 'Denmark':
             flagSrc = 'flags/Denmark.svg';
             break;
-        case 'serbia':
+        case 'Serbia':
             flagSrc = 'flags/Serbia.svg';
             break;
         //GROUP D
-        case 'netherlands':
+        case 'Netherlands':
             flagSrc = 'flags/Netherlands.svg';
             break;
-        case 'france':
+        case 'France':
             flagSrc = 'flags/France.svg';
             break;
-        case 'poland':
+        case 'Poland':
             flagSrc = 'flags/Poland.svg';
             break;
-        case 'austria':
+        case 'Austria':
             flagSrc = 'flags/Austria.svg';
             break;
         //GROUP E
-        case 'ukraine':
+        case 'Ukraine':
             flagSrc = 'flags/Ukraine.svg';
             break;
-        case 'slovakia':
+        case 'Slovakia':
             flagSrc = 'flags/Slovakia.svg';
             break;
-        case 'belgium':
+        case 'Belgium':
             flagSrc = 'flags/Belgium.svg';
             break;
-        case 'romania':
+        case 'Romania':
             flagSrc = 'flags/Romania.svg';
             break;
         //GROUP F
-        case 'portugal':
+        case 'Portugal':
             flagSrc = 'flags/Portugal.svg';
             break;
-        case 'czechia':
+        case 'Czechia':
             flagSrc = 'flags/Czechia.svg';
             break;
-        case 'georgia':
+        case 'Georgia':
             flagSrc = 'flags/Georgia.svg';
             break;
-        case 'turkey':
+        case 'Turkey':
             flagSrc = 'flags/Turkey.svg';
             break;
         default:
