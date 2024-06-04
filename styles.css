@@ -441,3 +441,15 @@ body{
     --bs-list-group-bg: transparent;
     --bs-list-group-color: var(--color-default);
 }
+
+/*modal*/
+.team-modal-list-item:hover{
+    background-color: rgba(0, 255, 255, 0.12);
+    cursor: pointer;
+}
+.team-modal-list-item:focus{
+    background-color: #E9C46A;
+}
+.team-modal-list-item.active:hover{
+    background-color: #0d6efd;
+}

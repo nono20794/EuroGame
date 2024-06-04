@@ -321,20 +321,53 @@ if(saveButtons)
 
 
 }
+//modal functions
+const listItems = document.querySelectorAll('.team-modal-list-item');
 
-//select countries
-const countries = [
-    { name: 'Albania', flag: 'https://flagcdn.com/w20/al.png' },
-    { name: 'Austria', flag: 'https://flagcdn.com/w20/at.png' },
-    { name: 'Belgium', flag: 'https://flagcdn.com/w20/be.png' },
-    { name: 'Croatia', flag: 'https://flagcdn.com/w20/hr.png' },
-    { name: 'Czechia', flag: 'https://flagcdn.com/w20/cz.png' },
-    { name: 'Argentina', flag: 'https://flagcdn.com/w20/ar.png' },
-    { name: 'Armenia', flag: 'https://flagcdn.com/w20/am.png' },
-    { name: 'Australia', flag: 'https://flagcdn.com/w20/au.png' },
-    { name: 'Austria', flag: 'https://flagcdn.com/w20/at.png' }
-];
 
-const countryList = document.querySelector('.country-list');
-const searchInput = document.getElementById('searchInput');
+// Get the search input field
+const searchInput = document.getElementById('ModalSearchInputTeam');
 
+// Add event listener to the search input field
+searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+
+    // Loop through each list item
+    listItems.forEach(item => {
+        const itemText = item.textContent.toLowerCase();
+
+        // Check if the item text includes the search term
+        if (itemText.includes(searchTerm)) {
+            item.style.display = 'block'; // Show the item
+        } else {
+            item.style.display = 'none'; // Hide the item
+        }
+    });
+});
+
+// Add click event listener to each list item
+listItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Remove the 'active' class from all list items
+        listItems.forEach(item => item.classList.remove('active'));
+
+        // Add the 'active' class to the clicked list item
+        this.classList.add('active');
+    });
+});
+
+const saveTeamModal = document.getElementById('modalSaveTeam');
+if(saveTeamModal)
+    saveTeamModal.addEventListener('click',saveTeam);
+
+function saveTeam(){
+    const selectedItem = document.querySelector('.team-modal-list-item.active');
+    if (selectedItem) {
+        const selectedItemText = selectedItem.textContent;
+        console.log('Selected item:', selectedItemText);
+        // You can perform additional actions here with the selected item text
+    } else {
+        console.log('No item selected');
+    }
+    console.log()
+}
