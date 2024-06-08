@@ -624,7 +624,7 @@
 
         <!--rules modal -->
 
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="model-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+        <div class="modal fade settings" id="myModal" tabindex="-1" aria-labelledby="model-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
@@ -634,12 +634,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="container border border-1 border-danger ">
-                            <div class="row border border-1 border-warning justify-content-center">
-                                <p><span>First Name: </span>David</p>
-                                <p><span>Last Name: </span>David </p>
+                        <div class="container border border-1 border-danger py-2">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <input type="text" class="input" id="firstName" required autocomplete="off">
+                                    <label for="firstName">First Name</label>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -653,20 +654,20 @@
         </div>
 
 
-        <footer id="footer" class="footer mt-2">
-            <div class="container ">
-                <div class="copyright">
-                    &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
-            </div>
-        </footer><!-- End Footer -->
+<!--        <footer id="footer" class="footer mt-2">-->
+<!--            <div class="container ">-->
+<!--                <div class="copyright">-->
+<!--                    &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved-->
+<!--                </div>-->
+<!--                <div class="credits">-->
+<!--                    &lt;!&ndash; All the links in the footer should remain intact. &ndash;&gt;-->
+<!--                    &lt;!&ndash; You can delete the links only if you purchased the pro version. &ndash;&gt;-->
+<!--                    &lt;!&ndash; Licensing information: https://bootstrapmade.com/license/ &ndash;&gt;-->
+<!--                    &lt;!&ndash; Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ &ndash;&gt;-->
+<!--                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </footer>&lt;!&ndash; End Footer &ndash;&gt;-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>

@@ -305,6 +305,9 @@ h1,h2,h3,h4,h5,h6{
     background-color: #E9C46A;
     border: 1px solid #E9C46A; ;
 }
+.dropdown-item{
+    cursor: pointer;
+}
 /*select*/
 @media (min-width: 768px) {
     .nav-tabs {
@@ -505,4 +508,44 @@ h1,h2,h3,h4,h5,h6{
 .points-section span{
     font-family: "Montserrat", sans-serif;
 }
-.points-section
+.settings .input-box{
+    width: 330px;
+    box-sizing: border-box;
+}
+
+.settings .input-box .input-field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+}
+.settings .input-box .input-field .input{
+    height: 45px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    outline: none;
+    margin-bottom: 20px;
+    color: #40414a;
+}
+.settings .input-box .input-field label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: .5s;
+}
+.settings .input-box .input-field .input:focus ~ label{
+    top: -10px;
+    font-size: 13px;
+}
+.settings .input-box .input-field .input:valid ~ label{
+    top: -10px;
+    font-size: 13px;
+    color: var(--dark-orange);
+}
+.settings .input-box .input-field .input:focus,
+.settings .input-box .input-field .input:valid{
+    border-bottom: 1px solid var(--dark-orange);
+}
