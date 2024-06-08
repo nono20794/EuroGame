@@ -47,7 +47,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-md-end" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="rules.html">Rules</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-modal-init data-bs-target="#myModal">Settings</a></li>
                                 <li><a class="dropdown-item " id="real-admin-res" href="realRes.html">real result</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item logout" href="#">Log out</a></li>
@@ -624,57 +624,33 @@
 
         <!--rules modal -->
 
-<!--        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="model-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">-->
-<!--            <div class="modal-dialog">-->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="model-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+            <div class="modal-dialog">
 
-<!--                &lt;!&ndash; Modal content&ndash;&gt;-->
-<!--                <div class="modal-content">-->
-<!--                    <div class="modal-header">-->
-<!--                        <h4 class="modal-title" id="model-title">Rules</h4>-->
-<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                    </div>-->
-<!--                    <div class="modal-body">-->
-<!--                        <div class="container border border-1 border-danger ">-->
-<!--                            <div class="row border border-1 border-warning justify-content-center">-->
-<!--                                <h5 class="my-1 text-center">Rules points</h5>-->
-<!--                                <span class="text-decoration-underline fs-5 fw-semibold">Winning Points</span>-->
-<!--                                <P>Tournament Team Winner: 10 points.-->
-<!--                                    <br>Tournament Top Scorer: 10 points.</P>-->
-<!--                                <span class="text-decoration-underline fs-5 fw-semibold">Correct WLD</span>-->
-<!--                                <P>Group Staged: 3 points.-->
-<!--                                    <br>Round of 16: 5 points.-->
-<!--                                    <br>QuarterFinals: 6 points.-->
-<!--                                    <br>SemiFinals: 7 points.-->
-<!--                                    <br>3/4 place: 8 points.-->
-<!--                                    <br>Final: 8 points.-->
-<!--                                </P>-->
-<!--                                <span class="text-decoration-underline fs-5 fw-semibold">Exact Score</span>-->
-<!--                                <P>For all tournament stages: 1 point.</P>-->
-<!--                                <span class="text-decoration-underline fs-5 fw-semibold">Bonus Points</span>-->
-<!--                                <P>Exact Score in a game with 4+ goals: 1 point.-->
-<!--                                    <br>Your chosen Top scorer player scores a goal: 1 point.-->
-<!--                                    <br><span class="text-decoration-underline">Correct Playoff Winner</span>-->
-<!--                                    <br>Round of 16: 5 points.-->
-<!--                                    <br>QuarterFinals: 6 points.-->
-<!--                                    <br>SemiFinals: 7 points.-->
-<!--                                    <br>3/4 place: 8 points.-->
-<!--                                    <br>Final: 8 points.-->
-<!--                                </P>-->
-<!--                            </div>-->
-<!--                            <div class="row border border-1 border-info">-->
-<!--                                <p>the rules are </p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">-->
-<!--                            Close-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="model-title">Rules</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container border border-1 border-danger ">
+                            <div class="row border border-1 border-warning justify-content-center">
+                                <p><span>First Name: </span>David</p>
+                                <p><span>Last Name: </span>David </p>
+                            </div>
 
-<!--            </div>-->
-<!--        </div>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
 
         <footer id="footer" class="footer mt-2">
